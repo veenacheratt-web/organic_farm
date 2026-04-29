@@ -1,0 +1,293 @@
+# 🌱 Organic Fruits and Vegetables Selling WebApp
+
+A full-featured e-commerce platform connecting organic farmers directly with consumers. Built with Django, Bootstrap 5, and SQLite.
+
+## 📋 Table of Contents
+
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Project Structure](#project-structure)
+- [Installation Guide](#installation-guide)
+- [Configuration](#configuration)
+- [Database Setup](#database-setup)
+- [Running the Application](#running-the-application)
+- [User Roles](#user-roles)
+- [Testing Accounts](#testing-accounts)
+- [API Endpoints](#api-endpoints)
+- [Troubleshooting](#troubleshooting)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## 🎯 Project Overview
+
+The **Organic Fruits and Vegetables Selling WebApp** is a web-based platform designed to eliminate intermediaries in the organic produce supply chain. It provides a transparent marketplace where:
+
+- **Farmers** can showcase their organic products, manage inventory, and process orders
+- **Customers** can browse, purchase, and review organic produce directly from verified farmers
+- **Admins** can manage users, verify farmer credentials, and oversee platform operations
+
+---
+
+## ✨ Features
+
+### 👨‍🌾 Farmer Features
+- Farmer registration and profile management
+- Product CRUD operations (Create, Read, Update, Delete)
+- Inventory management with stock tracking
+- View orders received for their products
+- Update order status (Confirmed → Processing → Shipped → Delivered)
+- Sales analytics dashboard
+- Low stock alerts
+- Public farmer storefront
+
+### 👤 Customer Features
+- Customer registration and profile management
+- Browse products with search and filter
+- Shopping cart management
+- Secure checkout with multiple payment options
+- Order history and tracking
+- Write and edit product reviews
+- Rate products (1-5 stars)
+- Mark reviews as helpful
+
+### 🔧 Admin Features
+- User management (activate/deactivate)
+- Farmer verification
+- Order oversight
+- Category management
+- Platform analytics
+
+### 🛒 General Features
+- Responsive Bootstrap 5 design
+- Role-based authentication
+- Search and filter products by:
+  - Category
+  - Price range
+  - Organic certification
+  - Stock availability
+- Pagination for product listings
+- Session-based shopping cart
+- Order status tracking
+- Verified purchase reviews
+
+---
+
+## 🛠 Technology Stack
+
+| Layer | Technology |
+|-------|------------|
+| **Backend** | Python 3.10+ / Django 5.2 |
+| **Database** | SQLite (development) / PostgreSQL (production) |
+| **Frontend** | Django Templates + Bootstrap 5 |
+| **Styling** | Custom CSS + Bootstrap Icons |
+| **Forms** | Django Crispy Forms + Bootstrap 5 |
+| **Authentication** | Django Custom User Model |
+| **Images** | Pillow |
+| **Payments** | Dummy Payment Gateway (COD + Card Sandbox) |
+| **Deployment** | Gunicorn + Nginx / PythonAnywhere / Heroku |
+
+### Required Python Packages
+
+Django==5.2
+pillow==11.0.0
+django-crispy-forms==2.3
+crispy-bootstrap5==2024.10
+
+---
+
+## 📁 Project Structure
+organic_farm_project/
+│
+├── manage.py
+├── requirements.txt
+├── db.sqlite3
+│
+├── config/ # Project configuration
+│ ├── init.py
+│ ├── settings.py # Django settings
+│ ├── urls.py # Main URL configuration
+│ └── wsgi.py
+│
+├── apps/ # All Django applications
+│ ├── accounts/ # User authentication & profiles
+│ │ ├── init.py
+│ │ ├── admin.py
+│ │ ├── apps.py
+│ │ ├── forms.py # Registration & login forms
+│ │ ├── models.py # User, FarmerProfile, CustomerProfile
+│ │ ├── urls.py
+│ │ ├── views.py # Auth & dashboard views
+│ │ └── migrations/
+│ │
+│ ├── products/ # Product catalog
+│ │ ├── init.py
+│ │ ├── admin.py
+│ │ ├── apps.py
+│ │ ├── forms.py # Product & filter forms
+│ │ ├── models.py # Product, Category
+│ │ ├── urls.py
+│ │ ├── views.py # Product listing, detail, farmer views
+│ │ └── migrations/
+│ │
+│ ├── cart/ # Shopping cart
+│ │ ├── init.py
+│ │ ├── admin.py
+│ │ ├── apps.py
+│ │ ├── context_processors.py # Cart count for templates
+│ │ ├── forms.py
+│ │ ├── models.py # Cart, CartItem
+│ │ ├── urls.py
+│ │ ├── views.py
+│ │ └── migrations/
+│ │
+│ ├── orders/ # Order management
+│ │ ├── init.py
+│ │ ├── admin.py
+│ │ ├── apps.py
+│ │ ├── forms.py # Checkout form
+│ │ ├── models.py # Order, OrderItem
+│ │ ├── urls.py
+│ │ ├── views.py # Checkout, payment, order views
+│ │ └── migrations/
+│ │
+│ ├── reviews/ # Ratings & reviews
+│ │ ├── init.py
+│ │ ├── admin.py
+│ │ ├── apps.py
+│ │ ├── forms.py
+│ │ ├── models.py # Review, ReviewHelpful
+│ │ ├── urls.py
+│ │ ├── views.py
+│ │ └── migrations/
+│ │
+│ └── pages/ # Static pages
+│ ├── init.py
+│ ├── apps.py
+│ ├── urls.py
+│ └── views.py # Home, about, contact views
+│
+├── static/ # Static files (CSS, JS, images)
+│ ├── css/
+│ │ └── custom.css
+│ └── js/
+│ └── main.js
+│
+├── media/ # User uploaded files
+│ ├── products/ # Product images
+│ ├── profile_pics/ # Profile pictures
+│ └── products/gallery/ # Additional product images
+│
+└── templates/ # HTML templates
+├── base.html # Base template with navbar & footer
+├── accounts/
+│ ├── login.html
+│ ├── register.html
+│ ├── register_choice.html
+│ ├── customer_dashboard.html
+│ ├── farmer_dashboard.html
+│ └── edit_profile.html
+├── products/
+│ ├── product_list.html
+│ ├── product_detail.html
+│ ├── farmer_product_list.html
+│ ├── farmer_product_form.html
+│ ├── farmer_product_confirm_delete.html
+│ └── farmer_public_profile.html
+├── cart/
+│ └── cart_detail.html
+├── orders/
+│ ├── checkout.html
+│ ├── dummy_payment.html
+│ ├── order_detail.html
+│ ├── order_list.html
+│ └── farmer_orders.html
+├── reviews/
+│ ├── review_form.html
+│ └── my_reviews.html
+└── pages/
+├── home.html
+├── about.html
+└── contact.html
+
+
+---
+
+
+---
+
+## 📥 Installation Guide
+
+### Prerequisites
+
+- Python 3.10 or higher
+- pip (Python package manager)
+- virtualenv (recommended)
+
+# Step 1: Clone the Repository
+
+bash
+git clone https://github.com/veenacheratt/organic-farm-market.git
+cd organic-farm-market
+
+# Step 2: Create Virtual Environment
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# Step 3: Install Dependencies
+
+pip install -r requirements.txt
+
+# Step 4: Apply Migrations
+
+python manage.py makemigrations
+python manage.py migrate
+
+# Step 5: Create Superuser (Admin)
+
+python manage.py createsuperuser
+
+# 🚀 Running the Application
+
+python manage.py runserver
+
+#1. Administrator
+Access to Django admin panel (/admin)
+
+Manage all users and farmers
+
+Verify farmer profiles
+
+Oversee orders and products
+
+#2. Farmer
+Register as farmer
+
+Add/Edit/Delete products
+
+Manage inventory
+
+View orders for their products
+
+Update order status
+
+View sales analytics
+
+#3. Customer
+Register as customer
+
+Browse products
+
+Add to cart and checkout
+
+View order history
+
+Write product reviews
+
+Rate products
+
+
