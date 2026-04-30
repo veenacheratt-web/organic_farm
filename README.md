@@ -98,7 +98,6 @@ crispy-bootstrap5==2024.10
 <details>
 <summary>Click to expand project structure</summary>
 
-```text
 organic_farm_project/
 │
 ├── manage.py
@@ -186,7 +185,7 @@ organic_farm_project/
 
 ---
 
-🔥 Installation Guide
+## 🔥 Installation Guide
 Prerequisites
 Python 3.10 or higher
 
@@ -201,32 +200,28 @@ cd organic-farm-market
 
 Step 2: Create Virtual Environment
 
-# Windows
+## Windows
 python -m venv venv
 venv\Scripts\activate
 
-# macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
-
-Step 3: Install Dependencies
+## Step 3: Install Dependencies
 
 pip install -r requirements.txt
 
-Step 4: Apply Migrations
+## Step 4: Apply Migrations
 
 python manage.py makemigrations
 python manage.py migrate
 
-Step 5: Create Superuser (Admin)
+## Step 5: Create Superuser (Admin)
 
 python manage.py createsuperuser
 
-🚀 Running the Application
+## 🚀 Running the Application
 
 python manage.py runserver
 
-👥 User Roles
+## 👥 User Roles
 1. Administrator
 Access to Django admin panel (/admin)
 
