@@ -95,95 +95,88 @@ crispy-bootstrap5==2024.10
 
 ## 📁 Project Structure
 
-<details>
-<summary>Click to expand project structure</summary>
-
 organic_farm_project/
-│
+|
 ├── manage.py
 ├── requirements.txt
 ├── db.sqlite3
-│
-├── config/                              # Django project configuration
-│   ├── __init__.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-│
-├── apps/                                # All Django applications
-│   │
-│   ├── accounts/                       # User authentication & profiles
-│   │   ├── __init__.py
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── models.py                   # User, FarmerProfile, CustomerProfile
-│   │   ├── views.py                    # Login, register, dashboards
-│   │   ├── urls.py
-│   │   ├── forms.py                    # Registration forms
-│   │   └── migrations/
-│   │
-│   ├── products/                       # Product catalog
-│   │   ├── __init__.py
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── models.py                   # Product, Category
-│   │   ├── views.py                    # Product listing, detail, filters
-│   │   ├── urls.py
-│   │   ├── forms.py                    # Product forms, filters
-│   │   └── migrations/
-│   │
-│   ├── cart/                           # Shopping cart
-│   │   ├── __init__.py
-│   │   ├── models.py                   # Cart, CartItem
-│   │   ├── views.py                    # Add, remove, update cart
-│   │   ├── urls.py
-│   │   ├── forms.py
-│   │   ├── context_processors.py       # Cart count for templates
-│   │   └── migrations/
-│   │
-│   ├── orders/                         # Order management
-│   │   ├── __init__.py
-│   │   ├── models.py                   # Order, OrderItem
-│   │   ├── views.py                    # Checkout, payment, order status
-│   │   ├── urls.py
-│   │   ├── forms.py                    # Checkout form
-│   │   └── migrations/
-│   │
-│   ├── reviews/                        # Ratings & reviews
-│   │   ├── __init__.py
-│   │   ├── models.py                   # Review, ReviewHelpful
-│   │   ├── views.py                    # Add, edit, delete reviews
-│   │   ├── urls.py
-│   │   ├── forms.py
-│   │   └── migrations/
-│   │
-│   └── pages/                          # Static pages
-│       ├── __init__.py
-│       ├── views.py                    # Home, about, contact
-│       └── urls.py
-│
-├── static/                             # Static files
-│   ├── css/
-│   │   └── custom.css
-│   └── js/
-│       └── main.js
-│
-├── media/                              # User uploaded files (gitignored)
-│   ├── products/                       # Product images
-│   └── profile_pics/                   # Profile pictures
-│
-└── templates/                          # HTML templates
-    ├── base.html                       # Base template with navbar & footer
-    ├── accounts/                       # Login, register, dashboard templates
-    ├── products/                       # Product list, detail templates
-    ├── cart/                           # Cart template
-    ├── orders/                         # Checkout, order templates
-    ├── reviews/                        # Review templates
-    └── pages/                          # Home, about templates
-	
-</details>
-
----
+|
+├── config/ # Django project configuration
+│ ├── init.py
+│ ├── settings.py
+│ ├── urls.py
+│ └── wsgi.py
+|
+├── apps/ # All Django applications
+│ │
+│ ├── accounts/ # User authentication & profiles
+│ │ ├── init.py
+│ │ ├── admin.py
+│ │ ├── apps.py
+│ │ ├── models.py # User, FarmerProfile, CustomerProfile
+│ │ ├── views.py # Login, register, dashboards
+│ │ ├── urls.py
+│ │ ├── forms.py # Registration forms
+│ │ └── migrations/
+│ │
+│ ├── products/ # Product catalog
+│ │ ├── init.py
+│ │ ├── admin.py
+│ │ ├── apps.py
+│ │ ├── models.py # Product, Category
+│ │ ├── views.py # Product listing, detail, filters
+│ │ ├── urls.py
+│ │ ├── forms.py # Product forms, filters
+│ │ └── migrations/
+│ │
+│ ├── cart/ # Shopping cart
+│ │ ├── init.py
+│ │ ├── models.py # Cart, CartItem
+│ │ ├── views.py # Add, remove, update cart
+│ │ ├── urls.py
+│ │ ├── forms.py
+│ │ ├── context_processors.py # Cart count for templates
+│ │ └── migrations/
+│ │
+│ ├── orders/ # Order management
+│ │ ├── init.py
+│ │ ├── models.py # Order, OrderItem
+│ │ ├── views.py # Checkout, payment, order status
+│ │ ├── urls.py
+│ │ ├── forms.py # Checkout form
+│ │ └── migrations/
+│ │
+│ ├── reviews/ # Ratings & reviews
+│ │ ├── init.py
+│ │ ├── models.py # Review, ReviewHelpful
+│ │ ├── views.py # Add, edit, delete reviews
+│ │ ├── urls.py
+│ │ ├── forms.py
+│ │ └── migrations/
+│ │
+│ └── pages/ # Static pages
+│ ├── init.py
+│ ├── views.py # Home, about, contact
+│ └── urls.py
+|
+├── static/ # Static files
+│ ├── css/
+│ │ └── custom.css
+│ └── js/
+│ └── main.js
+|
+├── media/ # User uploaded files (gitignored)
+│ ├── products/ # Product images
+│ └── profile_pics/ # Profile pictures
+|
+└── templates/ # HTML templates
+├── base.html # Base template with navbar & footer
+├── accounts/ # Login, register, dashboard templates
+├── products/ # Product list, detail templates
+├── cart/ # Cart template
+├── orders/ # Checkout, order templates
+├── reviews/ # Review templates
+└── pages/ # Home, about templates
 
 ## 🔥 Installation Guide
 Prerequisites
