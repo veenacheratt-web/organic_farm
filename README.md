@@ -100,120 +100,94 @@ crispy-bootstrap5==2024.10
 ---
 
 ## 📁 Project Structure
+
+<details>
+<summary>Click to expand project structure</summary>
+
+```text
 organic_farm_project/
 │
 ├── manage.py
 ├── requirements.txt
 ├── db.sqlite3
 │
-├── config/ # Project configuration
-│ ├── init.py
-│ ├── settings.py # Django settings
-│ ├── urls.py # Main URL configuration
-│ └── wsgi.py
+├── config/                              # Django project configuration
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
 │
-├── apps/ # All Django applications
-│ ├── accounts/ # User authentication & profiles
-│ │ ├── init.py
-│ │ ├── admin.py
-│ │ ├── apps.py
-│ │ ├── forms.py # Registration & login forms
-│ │ ├── models.py # User, FarmerProfile, CustomerProfile
-│ │ ├── urls.py
-│ │ ├── views.py # Auth & dashboard views
-│ │ └── migrations/
-│ │
-│ ├── products/ # Product catalog
-│ │ ├── init.py
-│ │ ├── admin.py
-│ │ ├── apps.py
-│ │ ├── forms.py # Product & filter forms
-│ │ ├── models.py # Product, Category
-│ │ ├── urls.py
-│ │ ├── views.py # Product listing, detail, farmer views
-│ │ └── migrations/
-│ │
-│ ├── cart/ # Shopping cart
-│ │ ├── init.py
-│ │ ├── admin.py
-│ │ ├── apps.py
-│ │ ├── context_processors.py # Cart count for templates
-│ │ ├── forms.py
-│ │ ├── models.py # Cart, CartItem
-│ │ ├── urls.py
-│ │ ├── views.py
-│ │ └── migrations/
-│ │
-│ ├── orders/ # Order management
-│ │ ├── init.py
-│ │ ├── admin.py
-│ │ ├── apps.py
-│ │ ├── forms.py # Checkout form
-│ │ ├── models.py # Order, OrderItem
-│ │ ├── urls.py
-│ │ ├── views.py # Checkout, payment, order views
-│ │ └── migrations/
-│ │
-│ ├── reviews/ # Ratings & reviews
-│ │ ├── init.py
-│ │ ├── admin.py
-│ │ ├── apps.py
-│ │ ├── forms.py
-│ │ ├── models.py # Review, ReviewHelpful
-│ │ ├── urls.py
-│ │ ├── views.py
-│ │ └── migrations/
-│ │
-│ └── pages/ # Static pages
-│ ├── init.py
-│ ├── apps.py
-│ ├── urls.py
-│ └── views.py # Home, about, contact views
+├── apps/                                # All Django applications
+│   │
+│   ├── accounts/                       # User authentication & profiles
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py                   # User, FarmerProfile, CustomerProfile
+│   │   ├── views.py                    # Login, register, dashboards
+│   │   ├── urls.py
+│   │   ├── forms.py                    # Registration forms
+│   │   └── migrations/
+│   │
+│   ├── products/                       # Product catalog
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py                   # Product, Category
+│   │   ├── views.py                    # Product listing, detail, filters
+│   │   ├── urls.py
+│   │   ├── forms.py                    # Product forms, filters
+│   │   └── migrations/
+│   │
+│   ├── cart/                           # Shopping cart
+│   │   ├── __init__.py
+│   │   ├── models.py                   # Cart, CartItem
+│   │   ├── views.py                    # Add, remove, update cart
+│   │   ├── urls.py
+│   │   ├── forms.py
+│   │   ├── context_processors.py       # Cart count for templates
+│   │   └── migrations/
+│   │
+│   ├── orders/                         # Order management
+│   │   ├── __init__.py
+│   │   ├── models.py                   # Order, OrderItem
+│   │   ├── views.py                    # Checkout, payment, order status
+│   │   ├── urls.py
+│   │   ├── forms.py                    # Checkout form
+│   │   └── migrations/
+│   │
+│   ├── reviews/                        # Ratings & reviews
+│   │   ├── __init__.py
+│   │   ├── models.py                   # Review, ReviewHelpful
+│   │   ├── views.py                    # Add, edit, delete reviews
+│   │   ├── urls.py
+│   │   ├── forms.py
+│   │   └── migrations/
+│   │
+│   └── pages/                          # Static pages
+│       ├── __init__.py
+│       ├── views.py                    # Home, about, contact
+│       └── urls.py
 │
-├── static/ # Static files (CSS, JS, images)
-│ ├── css/
-│ │ └── custom.css
-│ └── js/
-│ └── main.js
+├── static/                             # Static files
+│   ├── css/
+│   │   └── custom.css
+│   └── js/
+│       └── main.js
 │
-├── media/ # User uploaded files
-│ ├── products/ # Product images
-│ ├── profile_pics/ # Profile pictures
-│ └── products/gallery/ # Additional product images
+├── media/                              # User uploaded files (gitignored)
+│   ├── products/                       # Product images
+│   └── profile_pics/                   # Profile pictures
 │
-└── templates/ # HTML templates
-├── base.html # Base template with navbar & footer
-├── accounts/
-│ ├── login.html
-│ ├── register.html
-│ ├── register_choice.html
-│ ├── customer_dashboard.html
-│ ├── farmer_dashboard.html
-│ └── edit_profile.html
-├── products/
-│ ├── product_list.html
-│ ├── product_detail.html
-│ ├── farmer_product_list.html
-│ ├── farmer_product_form.html
-│ ├── farmer_product_confirm_delete.html
-│ └── farmer_public_profile.html
-├── cart/
-│ └── cart_detail.html
-├── orders/
-│ ├── checkout.html
-│ ├── dummy_payment.html
-│ ├── order_detail.html
-│ ├── order_list.html
-│ └── farmer_orders.html
-├── reviews/
-│ ├── review_form.html
-│ └── my_reviews.html
-└── pages/
-├── home.html
-├── about.html
-└── contact.html
-
-
+└── templates/                          # HTML templates
+    ├── base.html                       # Base template with navbar & footer
+    ├── accounts/                       # Login, register, dashboard templates
+    ├── products/                       # Product list, detail templates
+    ├── cart/                           # Cart template
+    ├── orders/                         # Checkout, order templates
+    ├── reviews/                        # Review templates
+    └── pages/                          # Home, about templates ```
+</details>	
 ---
 
 
