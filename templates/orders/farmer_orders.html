@@ -1,0 +1,64 @@
+<!-- templates/orders/farmer_orders.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Orders for My Products</h1>
+    
+    {% if orders %}
+        {% for order_data in orders %}
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Order #{{ order_data.order.order_number }}</h5>
+                        <span class="badge bg-light text-dark">
+                            {{ order_data.order.order_date|date:"F j, Y g:i A" }}
+                        </span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h6>Items:</h6>
+                            {% for item in order_data.items %}
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>{{ item.quantity }} x {{ item.product.name }}</span>
+                                    <span>${{ item.total_price|floatformat:2 }}</span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-4">
+                            <p><strong>Customer:</strong> {{ order_data.order.customer.username }}</p>
+                            <p><strong>Total Amount:</strong> ${{ order_data.order.total_amount|floatformat:2 }}</p>
+                            <p><strong>Current Status:</strong> 
+                                <span class="badge {% if order_data.order.status == 'delivered' %}bg-success{% else %}bg-warning{% endif %}">
+                                    {{ order_data.order.get_status_display }}
+                                </span>
+                            </p>
+                            
+                            {% if order_data.order.status != 'delivered' and order_data.order.status != 'cancelled' %}
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                        Update Status
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'orders:farmer_update_status' order_data.order.id 'confirmed' %}">Confirm Order</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'orders:farmer_update_status' order_data.order.id 'processing' %}">Processing</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'orders:farmer_update_status' order_data.order.id 'shipped' %}">Mark as Shipped</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'orders:farmer_update_status' order_data.order.id 'delivered' %}">Mark as Delivered</a></li>
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info text-center">
+            <i class="fas fa-info-circle"></i> No orders have been placed for your products yet.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

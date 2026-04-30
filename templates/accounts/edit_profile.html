@@ -1,0 +1,84 @@
+<!-- templates/accounts/edit_profile.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Edit Profile</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">First Name</label>
+                                <input type="text" name="first_name" class="form-control" value="{{ user.first_name }}">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" name="last_name" class="form-control" value="{{ user.last_name }}">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" value="{{ user.email }}" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Phone Number</label>
+                            <input type="text" name="phone" class="form-control" value="{{ user.phone }}">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            <textarea name="address" class="form-control" rows="3">{{ user.address }}</textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Profile Picture</label>
+                            {% if user.profile_picture %}
+                                <div class="mb-2">
+                                    <img src="{{ user.profile_picture.url }}" width="80" height="80" class="rounded">
+                                </div>
+                            {% endif %}
+                            <input type="file" name="profile_picture" class="form-control">
+                        </div>
+                        
+                        {% if user.is_farmer %}
+                            <hr>
+                            <h5 class="mb-3">Farm Information</h5>
+                            <div class="mb-3">
+                                <label class="form-label">Farm Name</label>
+                                <input type="text" name="farm_name" class="form-control" value="{{ user.farmer_profile.farm_name }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Farm Location</label>
+                                <input type="text" name="farm_location" class="form-control" value="{{ user.farmer_profile.farm_location }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Bio</label>
+                                <textarea name="bio" class="form-control" rows="3">{{ user.farmer_profile.bio }}</textarea>
+                            </div>
+                        {% endif %}
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                            <a href="{% if user.is_farmer %}{% url 'accounts:farmer_dashboard' %}{% else %}{% url 'accounts:customer_dashboard' %}{% endif %}" class="btn btn-outline-secondary">
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

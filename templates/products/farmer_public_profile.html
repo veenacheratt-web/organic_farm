@@ -1,0 +1,71 @@
+<!-- templates/products/farmer_public_profile.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Farmer Header -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-2 text-center">
+                    {% if farmer.user.profile_picture %}
+                        <img src="{{ farmer.user.profile_picture.url }}" class="rounded-circle" width="120" height="120">
+                    {% else %}
+                        <i class="fas fa-tractor fa-5x text-success"></i>
+                    {% endif %}
+                </div>
+                <div class="col-md-7">
+                    <h2>{{ farmer.farm_name }}</h2>
+                    <p><i class="fas fa-map-marker-alt"></i> {{ farmer.farm_location }}</p>
+                    <p>{{ farmer.bio }}</p>
+                    <div class="mt-2">
+                        <span class="badge bg-success"><i class="fas fa-leaf"></i> {{ product_count }} Products</span>
+                        <span class="badge bg-info"><i class="fas fa-star"></i> {{ avg_rating|floatformat:1 }}/5 Rating</span>
+                        {% if farmer.is_organic_certified %}
+                            <span class="badge bg-warning text-dark"><i class="fas fa-certificate"></i> Certified Organic</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-3 text-center">
+                    <a href="{% url 'products:product_list' %}?farmer={{ farmer.id }}" class="btn btn-success">
+                        <i class="fas fa-shopping-basket"></i> Shop this Farm
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Products from this Farmer -->
+    <h3 class="mb-3">Products from {{ farmer.farm_name }}</h3>
+    {% if products %}
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-3 mb-4">
+                    <div class="card product-card h-100">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" class="card-img-top" style="height: 180px; object-fit: cover;">
+                        {% else %}
+                            <div class="bg-light text-center py-4">
+                                <i class="fas fa-carrot fa-3x text-muted"></i>
+                            </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <h5>{{ product.name }}</h5>
+                            <p class="text-muted small">{{ product.category.name|default:"Organic" }}</p>
+                            <p class="fw-bold text-success">${{ product.price }}/{{ product.unit }}</p>
+                            <a href="{% url 'products:product_detail' product.slug %}" class="btn btn-sm btn-outline-primary w-100">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i> No products available from this farmer yet.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

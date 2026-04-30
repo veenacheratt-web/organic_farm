@@ -1,0 +1,50 @@
+<!-- templates/reviews/review_form.html -->
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">
+                        {% if existing_review %}
+                            <i class="fas fa-edit"></i> Edit Your Review
+                        {% else %}
+                            <i class="fas fa-star"></i> Write a Review
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" width="100" height="100" style="object-fit: cover;" class="rounded mb-2">
+                        {% else %}
+                            <i class="fas fa-carrot fa-4x text-muted mb-2"></i>
+                        {% endif %}
+                        <h5>{{ product.name }}</h5>
+                        <p class="text-muted">by {{ product.farmer.farm_name }}</p>
+                    </div>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-paper-plane"></i> 
+                                {% if existing_review %}Update Review{% else %}Submit Review{% endif %}
+                            </button>
+                            <a href="{% url 'products:product_detail' product.id %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
