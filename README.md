@@ -95,77 +95,78 @@ crispy-bootstrap5==2024.10
 
 ## 📁 Project Structure
 
-- **organic_farm_project/**
-  - `manage.py`
-  - `requirements.txt`
-  - `db.sqlite3`
-  - **config/**
-    - `__init__.py`
-    - `settings.py`
-    - `urls.py`
-    - `wsgi.py`
-  - **apps/**
-    - **accounts/**
-      - `__init__.py`
-      - `admin.py`
-      - `apps.py`
-      - `models.py`
-      - `views.py`
-      - `urls.py`
-      - `forms.py`
-      - **migrations/**
-    - **products/**
-      - `__init__.py`
-      - `admin.py`
-      - `apps.py`
-      - `models.py`
-      - `views.py`
-      - `urls.py`
-      - `forms.py`
-      - **migrations/**
-    - **cart/**
-      - `__init__.py`
-      - `models.py`
-      - `views.py`
-      - `urls.py`
-      - `forms.py`
-      - `context_processors.py`
-      - **migrations/**
-    - **orders/**
-      - `__init__.py`
-      - `models.py`
-      - `views.py`
-      - `urls.py`
-      - `forms.py`
-      - **migrations/**
-    - **reviews/**
-      - `__init__.py`
-      - `models.py`
-      - `views.py`
-      - `urls.py`
-      - `forms.py`
-      - **migrations/**
-    - **pages/**
-      - `__init__.py`
-      - `views.py`
-      - `urls.py`
-  - **static/**
-    - **css/**
-      - `custom.css`
-    - **js/**
-      - `main.js`
-  - **media/**
-    - **products/**
-    - **profile_pics/**
-  - **templates/**
-    - `base.html`
-    - **accounts/**
-    - **products/**
-    - **cart/**
-    - **orders/**
-    - **reviews/**
-    - **pages/**
-
+<pre>
+organic_farm_project/
+├── manage.py
+├── requirements.txt
+├── db.sqlite3
+├── config/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── apps/
+│   ├── accounts/
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   ├── forms.py
+│   │   └── migrations/
+│   ├── products/
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   ├── forms.py
+│   │   └── migrations/
+│   ├── cart/
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   ├── forms.py
+│   │   ├── context_processors.py
+│   │   └── migrations/
+│   ├── orders/
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   ├── forms.py
+│   │   └── migrations/
+│   ├── reviews/
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   ├── forms.py
+│   │   └── migrations/
+│   └── pages/
+│       ├── __init__.py
+│       ├── views.py
+│       └── urls.py
+├── static/
+│   ├── css/
+│   │   └── custom.css
+│   └── js/
+│       └── main.js
+├── media/
+│   ├── products/
+│   └── profile_pics/
+└── templates/
+    ├── base.html
+    ├── accounts/
+    ├── products/
+    ├── cart/
+    ├── orders/
+    ├── reviews/
+    └── pages/
+</pre>
 ## 🔥 Installation Guide
 Prerequisites
 Python 3.10 or higher
