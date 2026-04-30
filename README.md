@@ -204,37 +204,24 @@ python manage.py createsuperuser
 python manage.py runserver
 
 ## 👥 User Roles
-1. Administrator
-Access to Django admin panel (/admin)
+### 1. Administrator
+- Access to Django admin panel (/admin)
+- Manage all users and farmers
+- Verify farmer profiles
+- Oversee orders and products
 
-Manage all users and farmers
+### 2. Farmer
+- Register as farmer
+- Add/Edit/Delete products
+- Manage inventory
+- View orders for their products
+- Update order status
+- View sales analytics
 
-Verify farmer profiles
-
-Oversee orders and products
-
-2. Farmer
-Register as farmer
-
-Add/Edit/Delete products
-
-Manage inventory
-
-View orders for their products
-
-Update order status
-
-View sales analytics
-
-3. Customer
-Register as customer
-
-Browse products
-
-Add to cart and checkout
-
-View order history
-
-Write product reviews
-
-Rate products
+### 3. Customer
+- Register as customer
+- Browse products
+- Add to cart and checkout
+- View order history
+- Write product reviews
+- Rate products
