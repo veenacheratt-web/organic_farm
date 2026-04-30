@@ -13,12 +13,6 @@ A full-featured e-commerce platform connecting organic farmers directly with con
 - [Database Setup](#database-setup)
 - [Running the Application](#running-the-application)
 - [User Roles](#user-roles)
-- [Testing Accounts](#testing-accounts)
-- [API Endpoints](#api-endpoints)
-- [Troubleshooting](#troubleshooting)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -96,6 +90,7 @@ Django==5.2
 pillow==11.0.0
 django-crispy-forms==2.3
 crispy-bootstrap5==2024.10
+
 
 ---
 
@@ -186,47 +181,52 @@ organic_farm_project/
     ├── cart/                           # Cart template
     ├── orders/                         # Checkout, order templates
     ├── reviews/                        # Review templates
-    └── pages/                          # Home, about templates ```
-</details>	
+    └── pages/                          # Home, about templates
+	
+</details>
 
+🔥 Installation Guide
+Prerequisites
+Python 3.10 or higher
 
-## 📥 Installation Guide
+pip (Python package manager)
 
-### Prerequisites
+virtualenv (recommended)
 
-- Python 3.10 or higher
-- pip (Python package manager)
-- virtualenv (recommended)
+Step 1: Clone the Repository
 
-# Step 1: Clone the Repository
-
-bash
 git clone https://github.com/veenacheratt/organic-farm-market.git
 cd organic-farm-market
 
-# Step 2: Create Virtual Environment
+Step 2: Create Virtual Environment
+
 # Windows
 python -m venv venv
 venv\Scripts\activate
 
-# Step 3: Install Dependencies
+# macOS/Linux
+python3 -m venv venv
+source venv/bin/activate
+
+Step 3: Install Dependencies
 
 pip install -r requirements.txt
 
-# Step 4: Apply Migrations
+Step 4: Apply Migrations
 
 python manage.py makemigrations
 python manage.py migrate
 
-# Step 5: Create Superuser (Admin)
+Step 5: Create Superuser (Admin)
 
 python manage.py createsuperuser
 
-# 🚀 Running the Application
+🚀 Running the Application
 
 python manage.py runserver
 
-#1. Administrator
+👥 User Roles
+1. Administrator
 Access to Django admin panel (/admin)
 
 Manage all users and farmers
@@ -235,7 +235,7 @@ Verify farmer profiles
 
 Oversee orders and products
 
-#2. Farmer
+2. Farmer
 Register as farmer
 
 Add/Edit/Delete products
@@ -248,7 +248,7 @@ Update order status
 
 View sales analytics
 
-#3. Customer
+3. Customer
 Register as customer
 
 Browse products
@@ -260,5 +260,3 @@ View order history
 Write product reviews
 
 Rate products
-
-
