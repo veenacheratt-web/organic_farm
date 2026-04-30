@@ -95,8 +95,6 @@ crispy-bootstrap5==2024.10
 
 ## 📁 Project Structure
 
-## 📁 Project Structure
-
 - **organic_farm_project/**
   - `manage.py`
   - `requirements.txt`
