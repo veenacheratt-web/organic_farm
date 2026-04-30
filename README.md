@@ -91,7 +91,6 @@ pillow==11.0.0
 django-crispy-forms==2.3
 crispy-bootstrap5==2024.10
 
-
 ---
 
 ## 📁 Project Structure
@@ -184,6 +183,8 @@ organic_farm_project/
     └── pages/                          # Home, about templates
 	
 </details>
+
+---
 
 🔥 Installation Guide
 Prerequisites
