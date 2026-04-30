@@ -188,10 +188,7 @@ organic_farm_project/
     ├── reviews/                        # Review templates
     └── pages/                          # Home, about templates ```
 </details>	
----
 
-
----
 
 ## 📥 Installation Guide
 
