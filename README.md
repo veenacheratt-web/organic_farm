@@ -183,8 +183,10 @@ cd organic-farm-market
 Step 2: Create Virtual Environment
 
 ## Windows
+<pre>
 python -m venv venv
 venv\Scripts\activate
+</pre>
 
 ## Step 3: Install Dependencies
 
@@ -192,8 +194,10 @@ pip install -r requirements.txt
 
 ## Step 4: Apply Migrations
 
+<pre>
 python manage.py makemigrations
 python manage.py migrate
+</pre>
 
 ## Step 5: Create Superuser (Admin)
 
